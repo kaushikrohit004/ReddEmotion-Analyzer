@@ -1,63 +1,56 @@
-# reddit-sentiment-analysis
-This program goes thru reddit, finds the most mentioned tickers and uses Vader SentimentIntensityAnalyzer to calculate the ticker compound value.  
+# Reddit Sentiment Analysis
+
+This program navigates through Reddit, identifies the most frequently mentioned stock tickers, and employs the Vader SentimentIntensityAnalyzer to calculate the compound sentiment value for each ticker.
 
 ## Program Parameters
-<pre>
-subs = []           sub-reddit to search
-post_flairs = {}    posts flairs to search || None flair is automatically considered
-goodAuth = {}       authors whom comments are allowed more than once
-uniqueCmt = True    allow one comment per author per symbol
-ignoreAuthP = {}    authors to ignore for posts
-ignoreAuthC = {}    authors to ignore for comment 
-upvoteRatio = float upvote ratio for post to be considered, 0.70 = 70%
-ups = int           define # of upvotes, post is considered if upvotes exceed this #
-limit = int         define the limit, comments 'replace more' limit
-upvotes = int       define # of upvotes, comment is considered if upvotes exceed this #
-picks = int         define # of picks here, prints as "Top ## picks are:"
-picks_ayz = int     define # of picks for sentiment analysis
-</pre>
 
-# How to run:
-    
-    pip install -r requirements.txt
-    python3 reddit-sentiment-analysis.py
-    
-    
-## Sample Output
-It took 1574.61 seconds to analyze 14236 comments in 8 posts in 1 subreddits.
+```python
+subs = []           # List of subreddits to search
+post_flairs = {}    # Dictionary of post flairs to search; if None, all flairs are considered
+goodAuth = {}       # Dictionary of authors whose comments can be counted multiple times
+uniqueCmt = True    # Boolean to allow only one comment per author per symbol
+ignoreAuthP = {}    # Set of authors to ignore for posts
+ignoreAuthC = {}    # Set of authors to ignore for comments
+upvoteRatio = 0.70  # Minimum upvote ratio for a post to be considered (0.70 = 70%)
+ups = 100           # Minimum number of upvotes for a post to be considered
+limit = 500         # Limit for 'replace more' in comments
+upvotes = 20        # Minimum number of upvotes for a comment to be considered
+picks = 10          # Number of top picks to display
+picks_ayz = 5       # Number of top picks for sentiment analysis
 
-Posts analyzed saved in titles
+### How to Run
+pip install -r requirements.txt
+python3 reddit-sentiment-analysis.py
 
-10 most mentioned picks:\
-GME: 764\
-SPCE: 183\
-PLTR: 89\
-TSLA: 71\
-MVIS: 42\
-NVDA: 34\
-AMD: 30\
-F: 29\
-TLRY: 29\
-AAPL: 26
+### Sample Output
+Analysis took 1574.61 seconds for 14236 comments across 8 posts in 1 subreddit.
 
-Sentiment analysis of top 5 picks:\
-     &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Bearish &nbsp;Neutral &nbsp;Bullish&nbsp; Total/Compound\
-GME   &nbsp; 0.087  &nbsp; 0.707  &nbsp;&nbsp; 1.548    &nbsp;&nbsp;&nbsp;      0.030\
-SPCE  &nbsp; 0.119  &nbsp; 0.645  &nbsp;&nbsp; 1.618    &nbsp;&nbsp;&nbsp;      0.027\
-PLTR  &nbsp; 0.073  &nbsp; 0.649  &nbsp;&nbsp; 1.751    &nbsp;&nbsp;&nbsp;      0.032\
-TSLA  &nbsp; 0.088  &nbsp; 0.650  &nbsp;&nbsp; 1.543    &nbsp;&nbsp;&nbsp;      0.049\
-MVIS  &nbsp; 0.155  &nbsp; 0.698  &nbsp;&nbsp; 1.714    &nbsp;&nbsp;&nbsp;     -0.020
-![](mentioned.png)
-![](sentiment.png)
+Posts analyzed are saved in 'titles.txt'.
 
-## Data:
-Includes US stocks with market cap > 100 Million, and price above $3. It doesn't include penny stocks.\
-You can download data from here:\
-Source (US stocks):  https://www.nasdaq.com/market-activity/stocks/screener?exchange=nasdaq&letter=0&render=download\
+Top 10 most mentioned picks:
+GME: 764 mentions
+SPCE: 183 mentions
+PLTR: 89 mentions
+TSLA: 71 mentions
+MVIS: 42 mentions
+NVDA: 34 mentions
+AMD: 30 mentions
+F: 29 mentions
+TLRY: 29 mentions
+AAPL: 26 mentions
+
+Sentiment analysis of top 5 picks:
+Ticker  Bearish Neutral Bullish Total/Compound
+GME     0.087   0.707   1.548   0.030
+SPCE    0.119   0.645   1.618   0.027
+PLTR    0.073   0.649   1.751   0.032
+TSLA    0.088   0.650   1.543   0.049
+MVIS    0.155   0.698   1.714  -0.020
+
+The sentiment analysis visualizations are saved as ‘mentioned.png’ and ‘sentiment.png’.
+
+### Data
+The analysis includes U.S. stocks with a market cap greater than $100 million and a price above $3. Penny stocks are excluded. The data can be downloaded from the following source: US Stocks Data
 
 
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
