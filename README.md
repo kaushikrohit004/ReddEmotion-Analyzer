@@ -18,11 +18,11 @@ upvotes = 20        # Minimum number of upvotes for a comment to be considered
 picks = 10          # Number of top picks to display
 picks_ayz = 5       # Number of top picks for sentiment analysis
 
-### How to Run
+## How to Run
 pip install -r requirements.txt
 python3 reddit-sentiment-analysis.py
 
-### Sample Output
+## Sample Output
 Analysis took 1574.61 seconds for 14236 comments across 8 posts in 1 subreddit.
 
 Posts analyzed are saved in 'titles.txt'.
@@ -49,7 +49,7 @@ MVIS    0.155   0.698   1.714  -0.020
 
 The sentiment analysis visualizations are saved as ‘mentioned.png’ and ‘sentiment.png’.
 
-### Data
+## Data
 The analysis includes U.S. stocks with a market cap greater than $100 million and a price above $3. Penny stocks are excluded. The data can be downloaded from the following source: US Stocks Data
 
 
